@@ -1,0 +1,139 @@
+---
+title: "Automation of statistic summary and analysis using R Shiny"
+subtitle: " "
+author: "Lihai Song, Zi Wang, Jing Huang"
+job: Sr. Data scientist
+date: "RMedicine 2022, 8/11/2022"
+hitheme     : tomorrow  
+highlighter : highlight.js 
+mode: self-contained
+output: slidy_presentation
+header-includes: 
+  - \pgfdeclareimage[height=.5cm]{logoHarman}{CHOP.png}
+  - \pgfdeclareimage[height=.5cm]{logoMSC}{Penn.png}
+  - \logo{\pgfuseimage{logoMSC}\pgfuseimage{logoHarman}}
+---
+
+## Background
+
+- Basic statistical analyses, e.g. summary statistics, regression analysis and testing of association, are used in almost all the medical research. 
+- Researchers with less/no experience of R statistical programming are struggling to make effective statistical analysis. 
+- Reproducible require extra effort including constantly documentation and logging.
+
+## Hurdles
+
+Often time, researchers are facing such hurdles:
+
+- Find the right packages for certain tasks can be challenging.
+- Syntax across packages vary dramatically.
+- Typo and case senstivites can cause confusions.
+- Repetitive works create version control issues.
+- Reproducibility require tremendous effort of logging.
+- There many not available for the file formats needed.
+
+![](documents bury_hoffpost.jpg){#id .class width=50% height=50%}
+
+## Solutions
+
+To overcome these, a solution should address those concerns:
+
+- Incoporate many common used packages into one.
+- Keep syntax consistant across analysis.
+- Remove the need to type data entries.
+- One place for repeating analysis without concerning of version issues.
+- Provide output in various file formats.
+
+## R shiny app
+
+We developed a R shiny app that automates basic statistical analysis, produces publishable tables and figures.  
+It takes advantage of intuitive and interactive features of shiny apps UI, make the solution possible. 
+
+![](stats_panel.png){#id .class width=80% height=69%}
+
+
+## Features
+
+- A click and choose UI, no typing is needed.
+- Supports commonly used R packages for generating tables and figures.
+- Provide download buttons for commonly used file formats(Excel, PDF etc).
+- Repeated Interactive explanatory analysis within the app.
+- Consistency of analysis make reproducible results possible.
+
+```{r diagram, comment=F,cache=TRUE,echo=FALSE}
+
+library(DiagrammeR)
+covid <- "graph LR;
+R{Raw data}--Vicky-->A[Social distancing]
+R{Raw data}--Vicky-->B[Weather data]
+R{Raw data}--PolicyLab-->D[Masking mandatory/compliance]
+R{Raw data}--Vicky-->E[Demographics]
+R{Raw data}--Vicky-->F[Covid-testing result]
+R{Raw data}--Lihai-->G[Covid confirmed cases]
+A[Social distancing]-->|Lihai|C{Analytic data}
+B[Weather data]-->|Lihai|C{Analytic data}
+D[Masking mandatory/compliance]-->|Lihai|C{Analytic data}
+E[Demographics]-->|Lihai|C{Analytic data}
+F[Covid-testing result]-->|Lihai|C{Analytic data}
+G[Covid confirmed cases]-->|Lihai|C{Analytic data}
+C{Analytic data}-->|PolicyLab|M[Modeling]
+M[Modeling]-->|Vicky|P[Ineractive maps]
+M[Modeling]-->|Lihai|V[Projection visualization]
+style R fill:#E5E25F;
+style A fill:#E5E25F  style B fill:#87AB51 
+style D fill:#23772C  style E fill:#B6E6E6
+style F fill:#E5E25F  style G fill:#87AB51 ;
+style C fill:#25778C ;
+style M fill:#2171B5;
+style V fill:#23772C 
+style P fill:#23772C "
+
+mermaid(covid)
+
+    # DiagrammeR("graph TB;
+    #            A-->B;
+    #            A---C;
+    #            A---D;
+    #            B-->E;
+    #            B---F;
+    #            C-.->D")
+
+
+# DiagrammeR::mermaid("graph LR;A(GPS data)-->C{Analytic data};
+# B[Weather data]-->C{Analytic data};
+# D[Masking mandatory/compliance]-->C{Analytic data};
+# E[Demographics]-->C{Analytic data};
+# F[Covid-testing result]-->C{Analytic data};
+# G[Covid confirmed cases]-->C{Analytic data};
+# C{Analytic data}-->M[Modeling];
+# M[Modeling]-->V[Data visualization]
+# 
+# style A fill:#E5E25F;  style B fill:#87AB51; style C fill:#3C8937;
+# style D fill:#23772C;  style E fill:#B6E6E6;
+# style F fill:#E5E25F;  style G fill:#87AB51; style M fill:#3C8937;
+# style V fill:#23772C;  "
+# )
+```
+
+
+## Demo
+
+We would like to use a mocking data to demonstrate this app.
+
+<!-- <https://chopdsbu.shinyapps.io/Stats/> -->
+<a href="https://chopdsbu.shinyapps.io/Stats/"> App demo </a>
+
+## Thank you!
+
+This work won't be possible without:
+
+- R packages developers for statistical analysis 
+- Rstudio for the amazing R shiny.
+- Startup fund from the Children’s Hospital of Philadelphia and University of Pennsylvania .
+- National Institute of Health (NIH R01HD099348). 
+
+We appreciate your comments and feedback! 
+ 
+![](CHOP RI.jpg)
+
+
+
