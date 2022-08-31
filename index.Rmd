@@ -1,0 +1,82 @@
+---
+  title: "R  medicine 2022"
+subtitle: "Automation of statistic summary and analysis"
+author: "Lihai Song"
+job: Sr. Data scientist
+logo: CHOP.png
+date: "8/11/2022"
+hitheme     : tomorrow  
+highlighter : highlight.js 
+output: slidy_presentation
+---
+
+## Background
+  
+  - Basic statistical analyses, e.g. summary statistics, regression analysis and testing of association, are used in almost all the medical research. 
+- Researchers with less/no experience of R statistical programming are struggling to make effective statistical analysis. 
+- Reproducible require extra effort including constantly documentation and logging.
+
+## Hurdles
+
+Often time, researchers are facing such hurdles:
+  
+  - Find the right packages for certain tasks can be challenging.
+- Syntax across packages vary dramatically.
+- Typo and case senstivites can cause confusions.
+- Repetitive works create version control issues.
+- Reproducibility require tremendous effort of logging.
+- There many not available for the file formats needed.
+
+## Solutions
+
+To overcome these, a solution should address those concerns:
+  
+  - Incoporate many common used packages into one.
+- Keep syntax consistant across analysis.
+- Remove the need to type data entries.
+- One place for repeating analysis without concerning of version issues.
+- Provide output in various file formats.
+
+## R shiny app
+
+We developed a R shiny app that automates basic statistical analysis, produces publishable tables and figures.  
+It takes advantage of intuitive and interactive features of shiny apps UI, make the solution possible. 
+
+## Features
+
+- A click and choose UI, no typing is needed.
+- Supports commonly used R packages for generating tables and figures.
+- Provide download buttons for commonly used file formats(Excel, PDF etc).
+- Repeated Interactive explanatory analysis within the app.
+- Consistency of analysis make reproducible results possible.
+## Diagram
+
+`- A click and choose UI, no typing is needed.
+- Supports commonly used R packages for generating tables and figures.
+- Provide download buttons for commonly used file formats(Excel, PDF etc).
+- Repeated Interactive explanatory analysis within the app.
+- Consistency of analysis make reproducible results possible.
+```{r diagram, echo=FALSE,comment=F,cache=TRUE}
+DiagrammeR::mermaid("Covid work flow;A(GPS data)-->C{Analytic data};
+B[Weather data]-->C{Analytic data};
+D[Masking mandatory/compliance]-->C{Analytic data};
+E[Demographics]-->C{Analytic data};
+F[Covid-testing result]-->C{Analytic data};
+G[Covid confirmed cases]-->C{Analytic data};
+C{Analytic data}-->M[Modeling];
+M[Modeling]-->V[Data visualization]
+
+style A fill:#E5E25F;  style B fill:#87AB51; style C fill:#3C8937;
+style D fill:#23772C;  style E fill:#B6E6E6;
+style F fill:#E5E25F;  style G fill:#87AB51; style M fill:#3C8937;
+style V fill:#23772C;  "
+)
+```
+
+## Demo
+
+We would like to use a mocking data to demonstrate this app.
+
+<https://chopdsbu.shinyapps.io/Stats/>
+  
+  
